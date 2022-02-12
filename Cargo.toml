@@ -1,0 +1,86 @@
+[package]
+name = "kaz-symbol-sdk"
+version = "0.1.0"
+edition = "2021"
+authors = ["kaz"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "kaz_symbol_sdk"
+create-type = ["lib"]
+
+[dependencies.symbol-crypto-core]
+git = "https://github.com/BlockPuppets/symbol-crypto-core"
+features = ['serde', 'with_mnemonic']
+optional = true
+
+[dependencies.anyhow]
+version = "^1.0"
+
+[dependencies.serde]
+version = "^1.0"
+features = ["derive"]
+
+[dependencies.serde_json]
+version = "^1.0"
+
+[dependencies.hex]
+version = "^0.4"
+
+[dependencies.regex]
+version = "^1"
+
+[dependencies.rand]
+version = "0.8"
+features = ["std_rng"]
+default-features = false
+
+[dependencies.sha3]
+version = "^0.9"
+default-features = false
+
+[dependencies.base32]
+version = "^0.4"
+
+[dependencies.ripemd160]
+version = "^0.9"
+
+[dependencies.fixed-hash]
+version = "^0.7"
+
+[dependencies.byteorder]
+version = "^1.4"
+default-features = false
+
+[dependencies.chrono]
+version = "0.4"
+
+[dependencies.bcs]
+version = "0.1"
+
+[dependencies.async-trait]
+version = "0.1"
+
+[dependencies.url]
+version = "2.2"
+
+[dependencies.reqwest]
+version = "0.11"
+features = ["json"]
+default_features = false
+
+[dependencies.tokio]
+version = "1.8"
+features = ["rt"]
+default_features = false
+
+[features]
+default = ['sym']  # default support for symbol blockchain
+nis1 = ['symbol-crypto-core/nis1'] # support for nem nis1 blockchain
+sym = ['symbol-crypto-core/sym']
+
+[dev-dependencies]
+lazy_static = "1.4"
+
+tokio = { version = "1.8", features = ["macros", "rt-multi-thread"] }
